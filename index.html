@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prasad Bhosale - Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #181818;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #333333, #1c1c1c);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            color: #6c7271;
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+        }
+
+        header img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            margin-top: -75px;
+            border: 5px solid #fff;
+            animation: bounce 2s infinite;
+        }
+
+        header h1 {
+            margin: 1rem 0 0.5rem;
+            font-size: 5rem;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        .container {
+            width: 85%;
+            margin: auto;
+            padding: 2rem 0;
+        }
+
+        .section {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: #222222;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .section h2 {
+            color: #9e9e9e;
+            border-bottom: 2px solid #4d4d4d;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .about p {
+            line-height: 1.6;
+        }
+
+        .skills, .experience {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skills .skill, .experience .job {
+            flex: 1 1 calc(33.333% - 1rem);
+            background: #2a2a2a;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .skills .skill:hover, .experience .job:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-button {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .contact-button a {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #444444, #2b2b2b);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .contact-button a:hover {
+            background: linear-gradient(135deg, #2b2b2b, #444444);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #333333;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+            color: #fff;
+            position: relative;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="Prasad.jpeg" alt="Profile Picture">
+        <h1>Prasad Bhosale</h1>
+        <p>.NET Developer</p>
+    </header>
+
+    <div class="container">
+        <section class="section about">
+            <h2>About Me</h2>
+            <p>Results-driven C# Backend Developer with almost two years of experience leveraging object-oriented design principles to develop and maintain software applications. Computer Science graduate proficient in C# and Python coding, skilled in improving workflow efficiency and enhancing user engagement. Experienced in creating and maintaining technical specifications.</p>
+        </section>
+
+        <section class="section skills">
+            <h2>Skills</h2>
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">React</div>
+            <div class="skill">Python</div>
+            <div class="skill">C#</div>
+            <div class="skill">MVC Framework</div>
+            <div class="skill">Entity Framework</div>
+            <div class="skill">.NET Framework</div>
+            <div class="skill">MySQL</div>
+            <div class="skill">Data analysis</div>
+            <div class="skill">Machine Learning</div>
+        </section>
+
+        <section class="section experience">
+            <h2>Experience</h2>
+            <div class="job">
+                <h3>.NET SDE 1 at Cavista Technology</h3>
+                <p>Developed and maintained backend systems using .NET framework 4.6 and MVC framework.</p>
+                <small>July 2022 - Present</small>
+            </div>
+            <div class="job">
+                <h3>Full Stack Intern at Digilytics Systems</h3>
+                <p>Worked on multiple client web projects using frameworks like Django and Flask.</p>
+                <small>July 2021 – Sept 2021</small>
+            </div>
+        </section>
+
+        <section class="section contact">
+            <h2>Contact Me</h2>
+            <div class="contact-button">
+                <a href="mailto:prasadbhosale834@gmail.com">Contact Me</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 Prasad Bhosale. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
