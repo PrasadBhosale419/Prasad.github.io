@@ -333,19 +333,21 @@ section { padding: 7rem 3rem; position: relative; }
 
 /* PROJECTS */
 #projects { border-top: 1px solid var(--border); }
-.projects-grid { display: grid; gap: 2rem; }
-.project-card {
+.projects-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: var(--surface);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1px;
+  background: var(--border);
   border: 1px solid var(--border);
-  transition: border-color 0.3s;
-  overflow: hidden;
 }
-.project-card:hover { border-color: var(--accent); }
-.project-card.flip .project-content { order: 2; }
-.project-card.flip .project-visual { order: 1; }
-.project-content { padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; }
+.project-card {
+  background: var(--bg);
+  padding: 2.5rem;
+  transition: background 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+.project-card:hover { background: #121212; }
 .project-num {
   font-family: 'DM Mono', monospace;
   font-size: 0.65rem;
@@ -355,39 +357,20 @@ section { padding: 7rem 3rem; position: relative; }
 }
 .project-name {
   font-family: 'DM Serif Display', serif;
-  font-size: 2rem;
+  font-size: 1.6rem;
   margin-bottom: 0.75rem;
   color: var(--text);
   text-decoration: none;
   display: block;
   transition: color 0.2s;
 }
-.project-name:hover { color: var(--accent); }
+.project-card:hover .project-name { color: var(--accent); }
 .project-desc {
   font-size: 0.875rem;
   color: var(--muted);
-  line-height: 1.75;
-  margin-bottom: 1.25rem;
-}
-.project-features {
-  list-style: none;
+  line-height: 1.7;
   margin-bottom: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-.project-features li {
-  font-size: 0.8rem;
-  color: var(--muted);
-  padding-left: 1.2rem;
-  position: relative;
-}
-.project-features li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--accent2);
-  font-size: 0.7rem;
+  flex: 1;
 }
 .project-footer {
   display: flex;
@@ -401,7 +384,7 @@ section { padding: 7rem 3rem; position: relative; }
   font-family: 'DM Mono', monospace;
   font-size: 0.65rem;
   padding: 0.2rem 0.6rem;
-  background: var(--bg);
+  background: var(--surface);
   color: var(--accent2);
   letter-spacing: 0.04em;
   border: 1px solid #2a3a38;
@@ -418,78 +401,8 @@ section { padding: 7rem 3rem; position: relative; }
   border-bottom: 1px solid transparent;
   padding-bottom: 1px;
   transition: border-color 0.2s;
-  flex-shrink: 0;
 }
 .project-ghlink:hover { border-color: var(--accent); }
-.project-visual {
-  background: #0c0c0c;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  min-height: 320px;
-}
-.mockup {
-  width: 100%;
-  max-width: 300px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-.mockup-bar {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  padding: 0.75rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.mockup-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.6rem;
-  color: var(--accent);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-.mockup-val {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.4rem;
-  color: var(--text);
-}
-.mockup-sub {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.6rem;
-  color: var(--muted);
-}
-.mockup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-.mockup-row {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  padding: 1rem;
-}
-.mockup-row .mockup-label { margin-bottom: 0.4rem; }
-.mockup-item {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  padding: 0.85rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.mockup-item-title { font-size: 0.8rem; color: var(--text); }
-.mockup-price {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
-  color: var(--accent2);
-}
-.mockup-status {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.6rem;
-  padding: 0.15rem 0.5rem;
-  border: 1px solid;
-}
-.mockup-status.done { color: var(--accent2); border-color: var(--accent2); }
-.mockup-status.pending { color: var(--red); border-color: var(--red); }
 
 /* EDUCATION */
 #education { background: var(--surface); border-top: 1px solid var(--border); }
@@ -783,175 +696,61 @@ footer {
   </div>
   <div class="projects-grid">
 
-    <!-- HireVault -->
     <div class="project-card reveal">
-      <div class="project-content">
-        <div class="project-num">001</div>
-        <a href="https://github.com/PrasadBhosale419/HireVault" target="_blank" class="project-name">HireVault</a>
-        <p class="project-desc">A modern HR onboarding platform for managing candidates from registration to document verification — all tracked on a centralized dashboard.</p>
-        <ul class="project-features">
-          <li>Candidate registration &amp; onboarding status tracking</li>
-          <li>Document upload, verification &amp; pending reason tracking</li>
-          <li>Dashboard analytics with filter by verification status</li>
-          <li>Secure authentication with role-based access</li>
-        </ul>
-        <div class="project-footer">
-          <div class="stack-tags">
-            <span class="stack-tag">.NET 8.0</span>
-            <span class="stack-tag">MVC</span>
-            <span class="stack-tag">Amazon RDS</span>
-            <span class="stack-tag">S3</span>
-            <span class="stack-tag">AWS Cognito</span>
-          </div>
-          <a href="https://github.com/PrasadBhosale419/HireVault" target="_blank" class="project-ghlink">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-            GitHub
-          </a>
+      <div class="project-num">001</div>
+      <a href="https://github.com/PrasadBhosale419/HireVault" target="_blank" class="project-name">HireVault</a>
+      <p class="project-desc">A secure HR onboarding platform for managing candidates from registration to document verification, with dashboard analytics and automated workflow tracking powered by AWS services.</p>
+      <div class="project-footer">
+        <div class="stack-tags">
+          <span class="stack-tag">.NET 8.0</span>
+          <span class="stack-tag">MVC</span>
+          <span class="stack-tag">Amazon RDS</span>
+          <span class="stack-tag">S3</span>
+          <span class="stack-tag">AWS Cognito</span>
+          <span class="stack-tag">SMTP</span>
         </div>
-      </div>
-      <div class="project-visual">
-        <div class="mockup">
-          <div class="mockup-bar">
-            <span class="mockup-label">Dashboard</span>
-            <span class="mockup-sub">HR Onboarding</span>
-          </div>
-          <div class="mockup-grid">
-            <div class="mockup-row">
-              <div class="mockup-label">Candidates</div>
-              <div class="mockup-val">142</div>
-            </div>
-            <div class="mockup-row">
-              <div class="mockup-label" style="color:#6ec8b4">Verified</div>
-              <div class="mockup-val">98</div>
-            </div>
-            <div class="mockup-row">
-              <div class="mockup-label" style="color:#c86e6e">Pending</div>
-              <div class="mockup-val">44</div>
-            </div>
-            <div class="mockup-row">
-              <div class="mockup-label">Docs</div>
-              <div class="mockup-val">317</div>
-            </div>
-          </div>
-          <div class="mockup-item">
-            <span class="mockup-item-title">Rahul Sharma</span>
-            <span class="mockup-status done">Verified</span>
-          </div>
-          <div class="mockup-item">
-            <span class="mockup-item-title">Priya Patil</span>
-            <span class="mockup-status pending">Pending</span>
-          </div>
-        </div>
+        <a href="https://github.com/PrasadBhosale419/HireVault" target="_blank" class="project-ghlink">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          GitHub
+        </a>
       </div>
     </div>
 
-    <!-- Kyto App -->
-    <div class="project-card flip reveal">
-      <div class="project-content">
-        <div class="project-num">002</div>
-        <a href="https://github.com/PrasadBhosale419/Kyto-app" target="_blank" class="project-name">Kyto App</a>
-        <p class="project-desc">A service marketplace connecting task posters with vendors. Users can post tasks, hire service providers, complete work, and track their earnings seamlessly.</p>
-        <ul class="project-features">
-          <li>Post tasks &amp; browse / hire vendors</li>
-          <li>Vendor registration &amp; service management</li>
-          <li>Profile dashboard with activity &amp; earnings tracking</li>
-          <li>Secure task completion workflow</li>
-        </ul>
-        <div class="project-footer">
-          <div class="stack-tags">
-            <span class="stack-tag">.NET 8.0</span>
-            <span class="stack-tag">ASP.NET MVC</span>
-            <span class="stack-tag">Azure SQL</span>
-            <span class="stack-tag">EF Core</span>
-          </div>
-          <a href="https://github.com/PrasadBhosale419/Kyto-app" target="_blank" class="project-ghlink">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-            GitHub
-          </a>
+    <div class="project-card reveal">
+      <div class="project-num">002</div>
+      <a href="https://github.com/PrasadBhosale419/Kyto-app" target="_blank" class="project-name">Kyto App</a>
+      <p class="project-desc">A full-stack service marketplace connecting task posters with vendors. Users can post tasks, hire service providers, complete work, and track earnings — all within a streamlined modern interface.</p>
+      <div class="project-footer">
+        <div class="stack-tags">
+          <span class="stack-tag">.NET 8.0</span>
+          <span class="stack-tag">MVC</span>
+          <span class="stack-tag">Azure SQL</span>
+          <span class="stack-tag">EF Core</span>
+          <span class="stack-tag">ASP.NET Identity</span>
         </div>
-      </div>
-      <div class="project-visual">
-        <div class="mockup">
-          <div class="mockup-bar">
-            <span class="mockup-label">Task Board</span>
-            <span class="mockup-sub">Marketplace</span>
-          </div>
-          <div class="mockup-item">
-            <div>
-              <div class="mockup-item-title">Home Deep Cleaning</div>
-              <div class="mockup-sub" style="margin-top:0.25rem">3 vendors applied</div>
-            </div>
-            <span class="mockup-status done">Open</span>
-          </div>
-          <div class="mockup-item">
-            <div>
-              <div class="mockup-item-title">Plumbing Repair</div>
-              <div class="mockup-sub" style="margin-top:0.25rem">Assigned to vendor</div>
-            </div>
-            <span class="mockup-status pending">Active</span>
-          </div>
-          <div class="mockup-bar" style="margin-top:0.25rem">
-            <span class="mockup-label" style="color:#6ec8b4">Earnings</span>
-            <span class="mockup-val" style="font-size:1rem">Rs. 4,200</span>
-          </div>
-        </div>
+        <a href="https://github.com/PrasadBhosale419/Kyto-app" target="_blank" class="project-ghlink">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          GitHub
+        </a>
       </div>
     </div>
 
-    <!-- Rentify -->
     <div class="project-card reveal">
-      <div class="project-content">
-        <div class="project-num">003</div>
-        <a href="https://github.com/PrasadBhosale419/Rentify" target="_blank" class="project-name">Rentify</a>
-        <p class="project-desc">A full-stack property listing and renting platform with Angular frontend and .NET 8 backend. Features search, sort, photo management and owner-only editing controls.</p>
-        <ul class="project-features">
-          <li>Property listings with search &amp; sort by name</li>
-          <li>Photo gallery with upload, delete &amp; default image</li>
-          <li>Owner-only property editing protected by auth</li>
-          <li>Responsive UI with tabbed navigation</li>
-        </ul>
-        <div class="project-footer">
-          <div class="stack-tags">
-            <span class="stack-tag">Angular</span>
-            <span class="stack-tag">.NET 8.0</span>
-            <span class="stack-tag">REST API</span>
-            <span class="stack-tag">Cloudinary</span>
-            <span class="stack-tag">TypeScript</span>
-          </div>
-          <a href="https://github.com/PrasadBhosale419/Rentify" target="_blank" class="project-ghlink">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-            GitHub
-          </a>
+      <div class="project-num">003</div>
+      <a href="https://github.com/PrasadBhosale419/Rentify" target="_blank" class="project-name">Rentify</a>
+      <p class="project-desc">A full-stack property listing and renting platform with Angular frontend and .NET 8 backend. Features property search, sorting, photo gallery management, and owner-only editing protected by authentication.</p>
+      <div class="project-footer">
+        <div class="stack-tags">
+          <span class="stack-tag">Angular</span>
+          <span class="stack-tag">.NET 8.0</span>
+          <span class="stack-tag">REST API</span>
+          <span class="stack-tag">Cloudinary</span>
+          <span class="stack-tag">TypeScript</span>
         </div>
-      </div>
-      <div class="project-visual">
-        <div class="mockup">
-          <div class="mockup-bar">
-            <span class="mockup-label">Properties</span>
-            <span class="mockup-sub">24 listings</span>
-          </div>
-          <div class="mockup-item">
-            <div>
-              <div class="mockup-item-title">3BHK Apartment</div>
-              <div class="mockup-sub" style="margin-top:0.25rem">Pune, Kothrud</div>
-            </div>
-            <span class="mockup-price">Rs. 18k/mo</span>
-          </div>
-          <div class="mockup-item">
-            <div>
-              <div class="mockup-item-title">Studio Flat</div>
-              <div class="mockup-sub" style="margin-top:0.25rem">Pune, Baner</div>
-            </div>
-            <span class="mockup-price">Rs. 9k/mo</span>
-          </div>
-          <div class="mockup-item">
-            <div>
-              <div class="mockup-item-title">2BHK Villa</div>
-              <div class="mockup-sub" style="margin-top:0.25rem">Pune, Wakad</div>
-            </div>
-            <span class="mockup-price">Rs. 22k/mo</span>
-          </div>
-        </div>
+        <a href="https://github.com/PrasadBhosale419/Rentify" target="_blank" class="project-ghlink">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          GitHub
+        </a>
       </div>
     </div>
 
