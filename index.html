@@ -204,7 +204,16 @@ nav.scrolled {
   top: 50%; left: 0;
   margin-top: -4px;
   margin-left: -4px;
+  transform-origin: 194px 4px;
   animation: orbit 8s linear infinite;
+}
+.orbit-dot:nth-child(6) {
+  width: 5px; height: 5px;
+  background: var(--accent2);
+  margin-top: -2.5px;
+  margin-left: -2.5px;
+  transform-origin: 225px 2.5px;
+  animation: orbit 14s linear infinite reverse;
 }
 
 /* SECTION SHARED */
@@ -576,6 +585,7 @@ footer {
       <div class="hero-center">
         <span class="hero-initials">PB</span>
       </div>
+      <div class="orbit-dot"></div>
       <div class="orbit-dot"></div>
     </div>
   </div>
